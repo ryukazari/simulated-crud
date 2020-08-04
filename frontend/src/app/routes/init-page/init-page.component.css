@@ -1,0 +1,15 @@
+.cardUsuario{
+    width: 100%;
+}
+
+.buttonAction{
+    margin: 1rem 0rem;
+}
+
+div button{
+ margin-left: 1rem;
+}
+
+.accion{
+    cursor: pointer;
+}

@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <div class="xs-12 md-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Seleccione usuario</mat-label>
+                <mat-select [(ngModel)]="user" (selectionChange)="seleccionarUsuario()">
+                    <mat-option *ngFor="let user of userslists" [value]="user">
+                    {{user.username}}: {{user.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="xs-12 md-12 cardUsuario" *ngIf="user">
+            <mat-card>
+                <div>Nombre: {{user.name}}</div>
+                <div>Nombre de usuario: {{user.username}}</div>
+                <div>Email: {{user.email}}</div>
+                <div>Web: {{user.website}}</div>
+            </mat-card>
+        </div>
+    </div>
+    <div *ngIf="user">
+        <div class="row buttonAction">
+            <div>
+                <mat-form-field>
+                    <mat-label>Filtro</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Filtro..." #input>
+                </mat-form-field>
+            </div>
+            <div class="buttons">
+                <button class="btn btn-primary" (click)="agregarPost()">
+                    Agregar Post
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> ID </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+                <ng-container matColumnDef="titulo">
+                    <th mat-header-cell *matHeaderCellDef> Título </th>
+                    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                </ng-container>
+                <ng-container matColumnDef="descripcion">
+                    <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                    <td mat-cell *matCellDef="let element"> {{element.body}} </td>
+                </ng-container>
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <span class="material-icons accion" (click)="editarPost(element)">
+                            edit
+                        </span>
+                        <span class="material-icons accion" (click)="eliminarPost(element.id)">
+                            delete
+                        </span>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+</div>
+<ngx-spinner></ngx-spinner>

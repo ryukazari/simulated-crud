@@ -1,0 +1,6 @@
+::ng-deep .mat-form-field {
+    display: block !important;
+}
+.btnModalCorreo{
+    margin: 0em 1em 0em 1em;
+}

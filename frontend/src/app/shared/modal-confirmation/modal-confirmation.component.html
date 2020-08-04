@@ -1,0 +1,31 @@
+<div class="centradoVertical">
+    <div style="display: block; text-align: center; ">
+        <div style="color: #FFB300;" *ngIf="data.tipo=='preguntar'">
+            <i class="material-icons" style="font-size: 60px;">
+                warning
+            </i>
+        </div>
+        <div style="color: #FFB300;" *ngIf="data.tipo=='advertir'">
+            <i class="material-icons" style="font-size: 60px;">
+                error
+            </i>
+        </div>
+        <div style="color: rgb(9, 126, 18);" *ngIf="data.tipo=='aceptar'">
+            <i class="material-icons" style="font-size: 60px;">
+                check_circle
+            </i>
+        </div>
+        <div style="color: rgb(170, 56, 36);" *ngIf="data.tipo=='cancelar'">
+            <i class="material-icons" style="font-size: 60px;">
+                cancel
+            </i>
+        </div>
+        <div style="font-weight: 500; font-size: 18px; margin-top: 10px;">{{data.titulo}}</div>
+        <div class="mt-1">{{data.texto}}</div>
+        <div class="mt-1" *ngIf="data.fecha !== undefined || data.fecha !== null">{{data.fecha | date:'dd/MM/yyyy'}} {{data.fecha | date:'shortTime'}}</div>
+        <div class="mt-3">
+            <button mat-button color="warn" (click)="onNoClick()" *ngIf="data.tipo == 'preguntar'">Cancelar</button>
+            <button mat-flat-button color="primary" (click)="onYesClick()" cdkFocusInitial>Aceptar</button>
+        </div>
+    </div>
+</div>
