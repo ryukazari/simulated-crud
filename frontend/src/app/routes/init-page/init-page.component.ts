@@ -99,7 +99,6 @@ export class InitPageComponent implements OnInit {
       result=>{
         this.spinner.show();
         if(result.ok){
-          this.spinner.hide();
             this.dialog.open(ModalConfirmationComponent, {
               width: '250px',
               data: {
@@ -109,6 +108,7 @@ export class InitPageComponent implements OnInit {
               }
             });
         }
+        this.spinner.hide();
       }
     )
   }
@@ -131,7 +131,6 @@ export class InitPageComponent implements OnInit {
       result=>{
         this.spinner.show();
         if(result.ok){
-          this.spinner.hide();
             this.dialog.open(ModalConfirmationComponent, {
               width: '250px',
               data: {
@@ -141,6 +140,7 @@ export class InitPageComponent implements OnInit {
               }
             });
         }
+        this.spinner.hide();
       }
     )
   }

@@ -32,13 +32,11 @@ export class ModalEditarPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data.post);
     if(this.data.editing){
       this.postForm.setValue({
         title: this.data.post.title,
         description: this.data.post.body
       });
-      console.log(this.postForm.value);
     }
   }
 
@@ -57,7 +55,6 @@ export class ModalEditarPostComponent implements OnInit {
   }
 
   agregarPost(post: Post){
-    console.log(post);
     this.postService.agregarPost(post).subscribe(
       (result: any) => {
         this.dialogRef.close({
